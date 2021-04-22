@@ -84,7 +84,8 @@
     // Redorder days for be conform to calendar
     {
         NSCalendar *calendar = [_manager.dateHelper calendar];
-        NSUInteger firstWeekday = (calendar.firstWeekday + 6) % 7; // Sunday == 1, Saturday == 7
+        NSDateComponents* comp = [calendar components:NSCalendarUnitWeekday fromDate:[NSDate date]];
+        NSUInteger firstWeekday = ([comp weekday] + 6) % 7; // Sunday == 1, Saturday == 7
         
         for(int i = 0; i < firstWeekday; ++i){
             id day = [days firstObject];

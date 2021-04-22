@@ -130,7 +130,8 @@
     componentsNewDate.year = componentsCurrentDate.year;
     componentsNewDate.month = componentsCurrentDate.month;
     componentsNewDate.weekOfMonth = componentsCurrentDate.weekOfMonth;
-    componentsNewDate.weekday = self.calendar.firstWeekday;
+    NSDateComponents* comp = [self.calendar components:NSCalendarUnitWeekday fromDate:[NSDate date]];
+    componentsNewDate.weekday = [comp weekday];
     
     return [self.calendar dateFromComponents:componentsNewDate];
 }
